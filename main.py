@@ -1,11 +1,9 @@
 from fastapi import FastAPI
+from routes import base
+from dotenv import load_dotenv
+
+load_dotenv(".env")
 
 app = FastAPI()
 
-@app.get("/welcome")
-def welcome():
-    return { 
-        "message ": "hello world"
-    }
-
-# i stop at 5 min at 05 vid
+app.include_router(base.base_router)
